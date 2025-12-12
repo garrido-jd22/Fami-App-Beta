@@ -3,17 +3,9 @@
 import React from "react";
 import { ThemeSwitcher } from "@/components/layout/ThemeSwitcher";
 import RowSteps from "@/components/layout/RowStepts";
-import { Button, Input, Checkbox, Link, Form, Divider } from "@heroui/react";
+import { Button, Input } from "@heroui/react";
 
 export default function RegisterPage() {
-    const [isVisible, setIsVisible] = React.useState(false);
-
-    const toggleVisibility = () => setIsVisible(!isVisible);
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        console.log("handleSubmit");
-    };
 
     return (
         <>
@@ -45,67 +37,81 @@ export default function RegisterPage() {
                         />
                     </div>
 
-                    <div className="flex flex-col gap-1">
-                        <p className="text-large font-medium">Sign in to your account</p>
-                        <p className="text-small text-default-500">to continue to Acme</p>
-                    </div>
 
-                    <Form className="flex flex-col gap-3" validationBehavior="native" onSubmit={handleSubmit}>
-                        <Input
-                            isRequired
-                            label="Email Address"
-                            name="email"
-                            placeholder="Enter your email"
-                            type="email"
-                            // variant="bordered"
-                        />
-                        <Input
-                            isRequired
-                            label="Password"
-                            name="password"
-                            placeholder="Enter your password"
-                            type={isVisible ? "text" : "password"}
-                            // variant="bordered"
-                        />
-                        <div className="flex w-full items-center justify-between px-1 py-2">
-                            <Checkbox name="remember" size="sm">
-                                Remember me
-                            </Checkbox>
-                            <Link className="text-default-500" href="#" size="sm">
-                                Forgot password?
-                            </Link>
+                    <div className="flex flex-col gap-6">
+                        <div className="flex flex-col gap-1 justify-center items-center">
+                            <p className="text-large font-medium mt-3">Información personal</p>
+                            <p className="text-small text-default-500">Dinos tu informacion como madre comunitaria</p>
                         </div>
-                        <Button className="w-full" color="primary" type="submit">
-                            Sign In
-                        </Button>
-                    </Form>
-                    <div className="flex items-center gap-4 py-2">
-                        <Divider className="flex-1" />
-                        <p className="text-tiny text-default-500 shrink-0">OR</p>
-                        <Divider className="flex-1" />
+
+                        {/* FORMULARIO – HERO UI */}
+                        <form className="flex flex-col gap-4">
+                            {/* Fila 1: nombres / apellidos */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <Input
+                                    isRequired
+                                    label="Nombres"
+                                    placeholder="Ingresa tus nombres"
+                                />
+                                <Input
+                                    isRequired
+                                    label="Apellidos"
+                                    placeholder="Ingresa tus apellidos"
+                                />
+                            </div>
+
+                            {/* Fila 2: tipo doc / número doc */}
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <Input
+                                    isRequired
+                                    label="Tipo de documento"
+                                    placeholder="CC, TI, CE..."
+                                />
+                                <Input
+                                    isRequired
+                                    className="md:col-span-2"
+                                    label="Número de documento"
+                                    placeholder="Ej. 1234567890"
+                                />
+                            </div>
+
+                            {/* Fila 3: fecha / teléfono */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <Input
+                                    isRequired
+                                    type="date"
+                                    label="Fecha de nacimiento"
+                                    placeholder=""
+                                />
+                                <Input
+                                    isRequired
+                                    label="Teléfono de contacto"
+                                    placeholder="Ej. 300 123 4567"
+                                />
+                            </div>
+
+                            {/* Fila 4: correo */}
+                            <div className="grid grid-cols-1 gap-4">
+                                <Input
+                                    isRequired
+                                    type="email"
+                                    label="Correo electrónico"
+                                    placeholder="Ingresa tu correo"
+                                />
+                            </div>
+
+                            {/* Botón */}
+                            <div className="flex justify-end mt-4">
+                                <Button
+                                    color="primary" variant="shadow"
+                                >
+                                    Continuar
+                                </Button>
+                            </div>
+                        </form>
                     </div>
-                    <div className="flex flex-col gap-2">
-                        <Button
-                            // startContent={<Icon icon="flat-color-icons:google" width={24} />}
-                            variant="faded"
-                        >
-                            Continue with Google
-                        </Button>
-                        <Button
-                            // startContent={<Icon className="text-default-500" icon="fe:github" width={24} />}
-                            variant="faded"
-                        >
-                            Continue with Github
-                        </Button>
-                    </div>
-                    <p className="text-small text-center">
-                        Need to create an account?&nbsp;
-                        <Link href="#" size="sm">
-                            Sign Up
-                        </Link>
-                    </p>
                 </div>
-            </div>
+            </div >
             <ThemeSwitcher />
         </>
     );

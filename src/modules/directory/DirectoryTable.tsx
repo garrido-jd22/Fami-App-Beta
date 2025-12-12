@@ -130,11 +130,10 @@ export function DirectoryTable() {
 
                 {/* Acciones */}
                 <div className="flex items-center gap-2">
-                    <Button color="primary" onPress={() => setIsOpen(true)}>
+                    <Button isIconOnly color="primary" onPress={() => setIsOpen(true)}>
                         <span className="material-symbols-rounded">
                             add
                         </span>
-                        Agregar
                     </Button>
 
                     <Dropdown>
